@@ -10,6 +10,6 @@ app.get('/', (req, res) => {
   res.end('Hello World');
 })
 
-app.listen(port, hostname, () => {
+app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);//not a ' but a `
 });
