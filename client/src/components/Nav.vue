@@ -66,10 +66,10 @@ const isCartOpen = ref(false);
 
         <div class="navbar-end">
           <div class="navbar-item">
-                <button class="button is-primary" @click="isCartOpen = !isCartOpen">
-                  <strong>Cart</strong>
-                </button>
-              </div>
+            <button class="button is-primary" @click="isCartOpen = !isCartOpen">
+              <strong>Cart</strong>
+            </button>
+          </div>
           <div class="navbar-item">
             <LoginBadge />
           </div>
