@@ -24,3 +24,6 @@ export default session;
 
 
 /////// MAke post goes in its own ts file and onMounted goes in the view file////////MAke post goes in a store as a reactive object
+/////////// : are for binding 
+/////////////profile pictures 
+/////////////v-model is a two way binding
