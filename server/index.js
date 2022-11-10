@@ -7,7 +7,10 @@ const hostname = "127.0.0.1";
 const port = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
-  res.setHeader("SUNY", "MY SUNY");
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
   next();
 });
 
@@ -20,7 +23,7 @@ app
   .get("/error", (req, res) => {
     sss.PORT();
   })
-  .use("/products", productsController);
+  .use("/api/v1/products", productsController);
 
 app.get("*", (req, res) => {
   res.sendFile("index.html", { root: "./client/dist" });
