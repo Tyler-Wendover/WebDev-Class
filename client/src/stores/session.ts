@@ -5,10 +5,10 @@ const session = reactive({
   user: null as User | null, //can put more in here
 });
 
-export function login(firstname: string, lastname: string) {
+export function login(name: string, email: string, password: string) {
   session.user = {
-    firstname,
-    lastname,
+    name,
+    email,
   };
 }
 
@@ -16,9 +16,9 @@ export function logout() {
   session.user = null;
 }
 
-export class User {
-  public firstname?: string; // ? means optional
-  public lastname?: string;
+export interface User {
+  name?: string; // ? means optional
+  email: string;
 }
 
 export default session;
