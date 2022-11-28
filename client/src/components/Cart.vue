@@ -2,6 +2,7 @@
 import FlyoutPanel from "./FlyOutPanel.vue";
 import cart, { updateProductQuantity } from "../stores/cart";
 import { computed } from "vue";
+import { isLoading } from "@/stores/session";
 const { isOpen } = defineProps<{
   isOpen: boolean;
 }>();
@@ -40,6 +41,7 @@ const subtotal = computed(() =>
                 x
                 <select
                   :value="item.quantity"
+                  :disabled="isLoading"
                   class="quantity"
                   @input="(e) => updateProductQuantity(item.product.id,  +(e.target as HTMLSelectElement).value)"
                 >
@@ -76,8 +78,5 @@ const subtotal = computed(() =>
   border-radius: 10px;
   border: 0;
   background-color: aliceblue;
-}
-.button {
-  margin-top: 1em;
 }
 </style>

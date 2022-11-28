@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { addProductToCart } from "@/stores/cart";
+import { isLoading } from "@/stores/session";
 import { computed, reactive, ref, watch } from "vue";
 import { RouterLink } from "vue-router";
 import { getProducts, type Product } from "../stores/products";
@@ -22,9 +23,10 @@ function addToCart(product: Product) {
 
     <div class="products">
       <RouterLink
-        class="product"
         v-for="product in products"
         :key="product.id"
+        class="product"
+        :class="{ 'is-disabled': isLoading }"
         :to="`/product/${product.id}`"
         v-show="product.title.toLowerCase().includes(search.toLowerCase())"
       >
@@ -36,10 +38,12 @@ function addToCart(product: Product) {
           <p>{{ product.description }}</p>
           <button
             class="button is-small is-primary is-rounded add"
+            :class="{ 'is-loading': isLoading }"
             @click.prevent="addToCart(product)"
           >
             +
           </button>
+
           <p class="price">
             <span class="currency">$</span>
             <span class="amount">{{ product.price }}</span>
@@ -58,6 +62,10 @@ function addToCart(product: Product) {
 }
 .add {
   float: right;
+}
+.is-disabled {
+  pointer-events: none;
+  opacity: 0.7;
 }
 .product {
   flex-basis: 10em;
